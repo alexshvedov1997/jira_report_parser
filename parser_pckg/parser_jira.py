@@ -1,6 +1,8 @@
 from bs4 import BeautifulSoup
 from copy import deepcopy
 import docx
+from docx.shared import Inches
+
 
 class JiraReport:
 
@@ -9,6 +11,8 @@ class JiraReport:
         self.__html_data = None
         self.__mydoc = docx.Document()
         self.__name = None
+        self.__work_time = None
+        self.__table = None
 
     def get_file_data(self, path):
         with open(path) as f:
@@ -53,7 +57,8 @@ class JiraReport:
             dict_["Updated"] = updated
             dict_["Status"] = status
             dict_["Labels"] = self.__parse_labels(labels)
-            self.__lst_report.append(dict_)
+            if dict_["Status"] == "Done":
+                self.__lst_report.append(dict_)
 
     def __parser(self, elem):
         elem = str(elem)
@@ -70,16 +75,48 @@ class JiraReport:
     def create_doc(self, path):
         count = 0
        # self.__mydoc.add_table(num)
-        self.__mydoc.add_heading(self.__name, 4)
+        self.__add_time_to_project()
+        self.__mydoc.add_paragraph("ФИО: " + self.__name)
+        self.__mydoc.add_paragraph("Количество часов: " + self.__work_time)
         for elem in self.__lst_report:
             count += 1
             str_2_head = "Задача " + str(count) + " :\n"
             str_ = "Проект: " + elem["Project"] + "\n" + "Задача: " + elem["Summary"] + "\n" \
-                   +"Дата создания: " + elem["Created"] + "\n" + "Дата закрытия: " + elem["Updated"] + \
+                  + "Затраченное время: " + elem["Time"]  + \
                    "\n" + "Статус: " + elem["Status"] + "\n" + "Список проектов: " + elem["Labels"] + "\n"
             self.__mydoc.add_heading(str_2_head, 3)
             self.__mydoc.add_paragraph(str_)
         self.__mydoc.save(r"{}".format(path))
 
+    def create_table_docx(self, path):
+        self.__add_time_to_project()
+        self.__mydoc.add_paragraph("ФИО: " + self.__name)
+        self.__mydoc.add_paragraph("Количество часов: " + self.__work_time)
+        self.__table = self.__mydoc.add_table(rows=(len(self.__lst_report) + 1), cols=4)
+       # self.__set_columns_inches(self.__table)
+        autofit = False
+        for cell in self.__table.columns[0].cells:
+            cell.width = Inches(0.5)
+        self.__mydoc.save(r"{}".format(path))
+
     def get_name(self):
         return self.__name
+
+    def set_time(self, str_):
+        self.__work_time = str_
+
+    def __add_time_to_project(self):
+        count_of_task = len(self.__lst_report)
+        hours = int(self.__work_time) // count_of_task
+        counter = 0
+        for elem in self.__lst_report:
+            counter += 1
+            if counter == count_of_task and count_of_task * hours < int(self.__work_time):
+                hours += int(self.__work_time) - count_of_task * hours
+            elem["Time"] = str(hours)
+
+    def __set_columns_inches(self, table):
+        widths = (Inches(1), Inches(3), Inches(1), Inches(2))
+        for row in table.rows:
+            for idx, width in enumerate(widths):
+                row.cells[idx].width = width

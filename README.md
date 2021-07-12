@@ -7,4 +7,4 @@
 
 Библиотеки Python
 
-bs4 , docx, tk
+bs4 , python-docx, tkinter
