@@ -98,7 +98,7 @@ class JiraReport:
       #  self.__set_columns_inches()
         self.__table.cell(0, 0).text = '№'
         self.__table.cell(0, 1).text = 'Проект'
-        self.__table.cell(0, 2).text = 'Время часы'
+        self.__table.cell(0, 2).text = 'Время, чы'
         self.__fill_table_all_hours()
         self.__mydoc.save(r"{}".format(path))
 
