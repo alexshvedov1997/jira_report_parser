@@ -44,13 +44,11 @@ class GuiJiraParser(Frame):
         if not self.__file_name_save:
              mb.showinfo("Отчет не создан", "Отчет не создан. Попробуйте еще раз.")
              return
-        #file_name_save = if_file_name_empty(obj_, file_name_save)
         self.__file_name_save = create_docx(self.__file_name_save)  # при закрытии создаст отчет
         var_time = str(self.__work_time.get())
         if not var_time.isdigit() or int(var_time) < 0 or not var_time:
             mb.showinfo("Отчет не создан", "Отчет не создан. Введите число.")
             return
         self.__jira_report.set_time(var_time)
-       # self.__jira_report.create_doc(self.__file_name_save)
         self.__jira_report.create_table_docx(self.__file_name_save)
         mb.showinfo("Отчет создан", "Отчет создан")

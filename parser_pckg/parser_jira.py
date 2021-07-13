@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 from copy import deepcopy
 import docx
-from docx.shared import Inches
+from docx.shared import Inches, Cm
 
 
 class JiraReport:
@@ -13,6 +13,8 @@ class JiraReport:
         self.__name = None
         self.__work_time = None
         self.__table = None
+        self.__hours_projects = list()
+        self.__list_of_projects = set()
 
     def get_file_data(self, path):
         with open(path) as f:
@@ -57,8 +59,7 @@ class JiraReport:
             dict_["Updated"] = updated
             dict_["Status"] = status
             dict_["Labels"] = self.__parse_labels(labels)
-            if dict_["Status"] == "Done":
-                self.__lst_report.append(dict_)
+            self.__lst_report.append(dict_)
 
     def __parser(self, elem):
         elem = str(elem)
@@ -74,7 +75,6 @@ class JiraReport:
 
     def create_doc(self, path):
         count = 0
-       # self.__mydoc.add_table(num)
         self.__add_time_to_project()
         self.__mydoc.add_paragraph("ФИО: " + self.__name)
         self.__mydoc.add_paragraph("Количество часов: " + self.__work_time)
@@ -82,7 +82,7 @@ class JiraReport:
             count += 1
             str_2_head = "Задача " + str(count) + " :\n"
             str_ = "Проект: " + elem["Project"] + "\n" + "Задача: " + elem["Summary"] + "\n" \
-                  + "Затраченное время: " + elem["Time"]  + \
+                  + "Затраченное время: " + elem["Time"] + \
                    "\n" + "Статус: " + elem["Status"] + "\n" + "Список проектов: " + elem["Labels"] + "\n"
             self.__mydoc.add_heading(str_2_head, 3)
             self.__mydoc.add_paragraph(str_)
@@ -92,11 +92,14 @@ class JiraReport:
         self.__add_time_to_project()
         self.__mydoc.add_paragraph("ФИО: " + self.__name)
         self.__mydoc.add_paragraph("Количество часов: " + self.__work_time)
-        self.__table = self.__mydoc.add_table(rows=(len(self.__lst_report) + 1), cols=4)
-       # self.__set_columns_inches(self.__table)
-        autofit = False
-        for cell in self.__table.columns[0].cells:
-            cell.width = Inches(0.5)
+        self.__calculate_total_hours_to_projects()
+        self.__table = self.__mydoc.add_table(rows=(len(self.__hours_projects) + 1), cols=3)
+        self.__table.style = 'Table Grid'
+      #  self.__set_columns_inches()
+        self.__table.cell(0, 0).text = '№'
+        self.__table.cell(0, 1).text = 'Проект'
+        self.__table.cell(0, 2).text = 'Время часы'
+        self.__fill_table_all_hours()
         self.__mydoc.save(r"{}".format(path))
 
     def get_name(self):
@@ -115,8 +118,49 @@ class JiraReport:
                 hours += int(self.__work_time) - count_of_task * hours
             elem["Time"] = str(hours)
 
-    def __set_columns_inches(self, table):
-        widths = (Inches(1), Inches(3), Inches(1), Inches(2))
-        for row in table.rows:
-            for idx, width in enumerate(widths):
-                row.cells[idx].width = width
+    def __set_columns_inches(self):
+        for i in range(len(self.__lst_report)):
+            for j in range(4):
+                if j == 0:
+                    self.__table.cell(i, j).width = Inches(1)
+                elif j == 1:
+                    self.__table.cell(i, j).width = Inches(1)
+                elif j == 2:
+                    self.__table.cell(i, j).width = Inches(1)
+                elif j == 3:
+                    self.__table.cell(i, j).width = Inches(2)
+
+    def __fill_table(self):
+        for row, elem in enumerate(self.__lst_report, 1):
+            for clmn in range(4):
+                if clmn == 0:
+                    self.__table.cell(row, clmn).text = str(row)
+                elif clmn == 1:
+                    self.__table.cell(row, clmn).text = elem["Summary"]
+                elif clmn == 2:
+                    self.__table.cell(row, clmn).text = elem["Time"]
+                elif clmn == 3:
+                    self.__table.cell(row, clmn).text = elem["Labels"]
+
+    def __calculate_total_hours_to_projects(self):
+        lst_ = [elem["Labels"].split(",")[0] for elem in self.__lst_report]
+        self.__list_of_projects = set(lst_)
+        for project in self.__list_of_projects:
+            sum_hours = 0
+            for elem in self.__lst_report:
+                if project == elem["Labels"].split(",")[0]:
+                    sum_hours += int(elem["Time"])
+            self.__hours_projects.append({project: sum_hours})
+ #       print(self.__hours_projects)
+
+    def __fill_table_all_hours(self):
+  #      print("List", self.__hours_projects)
+        for row, elem in enumerate(self.__hours_projects, 1):
+            tuple_ = tuple(elem)
+            for clmn in range(3):
+                 if clmn == 0:
+                    self.__table.cell(row, clmn).text = str(row)
+                 elif clmn == 1:
+                     self.__table.cell(row, clmn).text = tuple_[0]
+                 elif clmn == 2:
+                    self.__table.cell(row, clmn).text = str(elem[tuple_[0]])
