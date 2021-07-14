@@ -2,6 +2,8 @@ from bs4 import BeautifulSoup
 from copy import deepcopy
 import docx
 from docx.shared import Inches, Cm
+import datetime
+from parser_pckg.table_numbers_month import dict_table_number, month_rus
 
 
 class JiraReport:
@@ -17,7 +19,7 @@ class JiraReport:
         self.__list_of_projects = set()
 
     def get_file_data(self, path):
-        with open(path) as f:
+        with open(path, encoding="utf-8", newline="") as f:
             self.__html_data = f.read()
 
     def __parse_labels(self, labels):
@@ -76,7 +78,7 @@ class JiraReport:
     def create_doc(self, path):
         count = 0
         self.__add_time_to_project()
-        self.__mydoc.add_paragraph("ФИО: " + self.__name)
+        self.__mydoc.add_paragraph("ФИО: " + self.__name.strip())
         self.__mydoc.add_paragraph("Количество часов: " + self.__work_time)
         for elem in self.__lst_report:
             count += 1
@@ -90,16 +92,22 @@ class JiraReport:
 
     def create_table_docx(self, path):
         self.__add_time_to_project()
-        self.__mydoc.add_paragraph("ФИО: " + self.__name)
-        self.__mydoc.add_paragraph("Количество часов: " + self.__work_time)
+       # print(self.__name.strip())
+        self.__mydoc.add_paragraph("Подразделение: ОРВС")
+        table_number = dict_table_number.get(self.__name.strip(), "    ")  #словарь с табелями
+        self.__mydoc.add_paragraph("ФИО: " + self.__name.strip() + "\nТабельный номер:{}".format(table_number)
+                                   + "\nМесяц: {}".format(month_rus[str(datetime.datetime.now().month)])
+                                   + "\nГод {}".format(datetime.datetime.now().year)
+                                   + "\nКоличество отработаных часов: " + self.__work_time)
         self.__calculate_total_hours_to_projects()
         self.__table = self.__mydoc.add_table(rows=(len(self.__hours_projects) + 1), cols=3)
         self.__table.style = 'Table Grid'
-      #  self.__set_columns_inches()
         self.__table.cell(0, 0).text = '№'
         self.__table.cell(0, 1).text = 'Проект'
-        self.__table.cell(0, 2).text = 'Время, чы'
+        self.__table.cell(0, 2).text = 'Время, ч'
         self.__fill_table_all_hours()
+        self.__mydoc.add_paragraph("\nРуководитель: Шумский А.П")
+        self.__mydoc.add_paragraph("Отчет передан по системе 1С")
         self.__mydoc.save(r"{}".format(path))
 
     def get_name(self):
@@ -143,14 +151,35 @@ class JiraReport:
                     self.__table.cell(row, clmn).text = elem["Labels"]
 
     def __calculate_total_hours_to_projects(self):
-        lst_ = [elem["Labels"].split(",")[0] for elem in self.__lst_report]
+     #   lst_ = [elem["Labels"].split(",")[0] for elem in self.__lst_report]
+       # lst_ = [elem for elem in lst_ if elem.isdigit()]
+        lst_ = list()
+        for elem in self.__lst_report:
+            lst_labels = elem["Labels"].split(",")
+            if lst_labels[0].isdigit():
+                lst_.append(lst_labels[0].strip())
+            elif len(lst_labels) > 1:
+                lst_.append(lst_labels[1].strip())
+            elif len(lst_labels) == 1:
+                lst_.append(lst_labels[0].strip())
+
         self.__list_of_projects = set(lst_)
         for project in self.__list_of_projects:
             sum_hours = 0
             for elem in self.__lst_report:
-                if project == elem["Labels"].split(",")[0]:
+                if project == elem["Labels"].split(",")[0] and elem["Labels"].split(",")[0]:
+                    sum_hours += int(elem["Time"])
+                elif len(elem["Labels"].split(",")) > 1 and project == elem["Labels"].split(",")[1]:
                     sum_hours += int(elem["Time"])
             self.__hours_projects.append({project: sum_hours})
+        sum_proverka = 0
+        for hours in self.__hours_projects:
+            sum_proverka += hours[str(tuple(hours)[0])]
+        if sum_proverka < int(self.__work_time):
+            self.__hours_projects[-1][str(tuple(self.__hours_projects[-1])[0])] =\
+                self.__hours_projects[-1][str(tuple(self.__hours_projects[-1])[0])] + \
+                (int(self.__work_time) - sum_proverka)
+
  #       print(self.__hours_projects)
 
     def __fill_table_all_hours(self):
