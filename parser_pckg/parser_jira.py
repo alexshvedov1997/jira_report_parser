@@ -97,7 +97,7 @@ class JiraReport:
         table_number = dict_table_number.get(self.__name.strip(), "    ")  #словарь с табелями
         self.__mydoc.add_paragraph("ФИО: " + self.__name.strip() + "\nТабельный номер:{}".format(table_number)
                                    + "\nМесяц: {}".format(month_rus[str(datetime.datetime.now().month)])
-                                   + "\nГод {}".format(datetime.datetime.now().year)
+                                   + "\nГод: {}".format(datetime.datetime.now().year)
                                    + "\nКоличество отработаных часов: " + self.__work_time)
         self.__calculate_total_hours_to_projects()
         self.__table = self.__mydoc.add_table(rows=(len(self.__hours_projects) + 1), cols=3)
@@ -106,7 +106,8 @@ class JiraReport:
         self.__table.cell(0, 1).text = 'Проект'
         self.__table.cell(0, 2).text = 'Время, ч'
         self.__fill_table_all_hours()
-        self.__mydoc.add_paragraph("\nРуководитель: Шумский А.П")
+        self.__mydoc.add_paragraph("\nПодробная информация по ссылке: http://jira:8080/issues/?filter=11201")
+        self.__mydoc.add_paragraph("Руководитель: Шумский А.П")
         self.__mydoc.add_paragraph("Отчет передан по системе 1С")
         self.__mydoc.save(r"{}".format(path))
 

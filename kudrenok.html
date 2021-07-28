@@ -1,0 +1,2620 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+      xmlns:x="urn:schemas-microsoft-com:office:excel"
+      xmlns="http://www.w3.org/TR/REC-html40">
+    <head>
+        <title>Task monthly report (Jira)</title>
+        <style type="text/css">
+         table {
+             mso-displayed-decimal-separator:"\.";
+             mso-displayed-thousand-separator:"\,";
+         }
+         body
+         {
+             margin: 0px;
+             font-size: 12px;
+             font-family: Arial, sans-serif;
+             color:black;
+         }
+
+        </style>
+        <META HTTP-EQUIV="Content-Type" Content="application/vnd.ms-excel; charset=UTF-8">
+        <!-- JRA-7598 - ensure fields (e.g. description) occupy only one cell - even fields containing newlines. -->
+        <!--
+             Vertical align all cells to the top, in order to align all issue rows of issuetable to the top,
+             since Excel does not use or save the css files it is hardcoded here.
+           -->
+        <style>
+         @page
+         {
+             mso-page-orientation:landscape;
+             margin:.25in .25in .5in .25in;
+             mso-header-margin:.5in;
+             mso-footer-margin:.25in;
+             mso-footer-data:"&R&P of &N";
+             mso-horizontal-page-align:center;
+             mso-vertical-page-align:center;
+         }
+
+         td.issuekey,
+         td.issuetype,
+         td.status {
+             mso-style-parent: "";
+             mso-number-format: \@;
+             text-align: left;
+         }
+         br
+         {
+             mso-data-placement:same-cell;
+         }
+
+         td
+         {
+             vertical-align: top;
+         }
+        </style>
+
+        <!--[if gte mso 9]><xml>
+            <x:ExcelWorkbook>
+            <x:ExcelWorksheets>
+            <x:ExcelWorksheet>
+            <x:Name>general_report</x:Name>
+            <x:WorksheetOptions>
+            <x:Print>
+            <x:ValidPrinterInfo/>
+            </x:Print>
+            </x:WorksheetOptions>
+            </x:ExcelWorksheet>
+            </x:ExcelWorksheets>
+            </x:ExcelWorkbook>
+            </xml><![endif]-->
+    </head>
+    <body>
+
+        <table border="1">
+            <tr bgcolor="#0747a6" height="30">
+                <td colspan="48">
+                    <img src="http://jira:8080/images/jira-software.png" width="57" height="30" border="0" alt="Task monthly report (Jira)">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="48">
+                    <a href="http://jira:8080/issues/?filter=11201">Task monthly report (Jira)</a>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="48">
+                    Displaying <strong>28</strong> issues at <strong>28/Jul/21 8:31 AM</strong>.
+                </td>
+            </tr>
+        </table>
+
+        
+
+
+                            <issuetable-web-component>
+                <table id="issuetable"  border="1" cellpadding="3" cellspacing="1" width="100%">
+                        <thead>
+        <tr class="rowHeader">
+            
+                                                            <th class="colHeaderLink headerrow-project" data-id="project">
+                            Project
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-issuekey" data-id="issuekey">
+                            Key
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-summary" data-id="summary">
+                            Summary
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-issuetype" data-id="issuetype">
+                            Issue Type
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-status" data-id="status">
+                            Status
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-priority" data-id="priority">
+                            Priority
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-resolution" data-id="resolution">
+                            Resolution
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-assignee" data-id="assignee">
+                            Assignee
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-reporter" data-id="reporter">
+                            Reporter
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-creator" data-id="creator">
+                            Creator
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-created" data-id="created">
+                            Created
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-lastViewed" data-id="lastViewed">
+                            Last Viewed
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-updated" data-id="updated">
+                            Updated
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-resolutiondate" data-id="resolutiondate">
+                            Resolved
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-versions" data-id="versions">
+                            Affects Version/s
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-fixVersions" data-id="fixVersions">
+                            Fix Version/s
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-components" data-id="components">
+                            Component/s
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-duedate" data-id="duedate">
+                            Due Date
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-votes" data-id="votes">
+                            Votes
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-watches" data-id="watches">
+                            Watchers
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-thumbnail" data-id="thumbnail">
+                            Images
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-timeoriginalestimate" data-id="timeoriginalestimate">
+                            Original Estimate
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-timeestimate" data-id="timeestimate">
+                            Remaining Estimate
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-timespent" data-id="timespent">
+                            Time Spent
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-workratio" data-id="workratio">
+                            Work Ratio
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-subtasks" data-id="subtasks">
+                            Sub-Tasks
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-issuelinks" data-id="issuelinks">
+                            Linked Issues
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-environment" data-id="environment">
+                            Environment
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-description" data-id="description">
+                            Description
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-security" data-id="security">
+                            Security Level
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-progress" data-id="progress">
+                            Progress
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-aggregateprogress" data-id="aggregateprogress">
+                            Σ Progress
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-aggregatetimespent" data-id="aggregatetimespent">
+                            Σ Time Spent
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-aggregatetimeestimate" data-id="aggregatetimeestimate">
+                            Σ Remaining Estimate
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-aggregatetimeoriginalestimate" data-id="aggregatetimeoriginalestimate">
+                            Σ Original Estimate
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-labels" data-id="labels">
+                            Labels
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10104" data-id="customfield_10104">
+                            Epic Color
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10101" data-id="customfield_10101">
+                            Epic Link
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10103" data-id="customfield_10103">
+                            Epic Name
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10102" data-id="customfield_10102">
+                            Epic Status
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10200" data-id="customfield_10200">
+                            Flagged
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10300" data-id="customfield_10300">
+                            Global Rank
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10105" data-id="customfield_10105">
+                            Rank
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10100" data-id="customfield_10100">
+                            Sprint
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10106" data-id="customfield_10106">
+                            Story Points
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10400" data-id="customfield_10400">
+                            Worker name
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10000" data-id="customfield_10000">
+                            Development
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10301" data-id="customfield_10301">
+                            weight
+                                                    </th>
+                                                                    </tr>
+    </thead>
+    <tbody>
+                    
+
+                <tr id="issuerow14436" rel="14436" data-issuekey="HEL9595-137" class="issuerow">
+                                            <td class="project">    HEL laboratory
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="HEL9595-137" href="http://jira:8080/browse/HEL9595-137">HEL9595-137</a>
+</td>
+                                            <td class="summary"><p>
+                Разработка твердотельных моделей заглушек отсутствующих разъемов 
+    </p>
+</td>
+                                            <td class="issuetype">    Task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-yellow jira-issue-status-lozenge-indeterminate aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;In Progress&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;jira-issue-status-tooltip-desc&quot;&gt;This issue is being actively worked on at the moment by the assignee.&lt;/span&gt;">In Progress</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="reporter">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="creator">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="created"> 09/Jul/21 3:19 PM </td>
+                                            <td class="lastViewed"> 09/Jul/21 3:19 PM </td>
+                                            <td class="updated"> 09/Jul/21 3:19 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Разработка твердотельных моделей заглушек отсутствующих разъемов: <br/>
+ * под Amphenol (Перенесены на заднюю сторону)<br/>
+ * под разъем оптического кабеля (Отсутствует)
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9595, 9895.03, 9895.63</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101">
+            Структурирование 9895.03/9895.63
+    </td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00jov:
+  </td>
+                                            <td class="customfield_10105">      0|i00ir0:
+  </td>
+                                            <td class="customfield_10100"></td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    900
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14575" rel="14575" data-issuekey="HEL9595-221" class="issuerow">
+                                            <td class="project">    HEL laboratory
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="HEL9595-221" href="http://jira:8080/browse/HEL9595-221">HEL9595-221</a>
+</td>
+                                            <td class="summary"><p>
+            <span class="parentIssue">HEL9595-209</span>
+                Оформление кд уже разработанного
+    </p>
+</td>
+                                            <td class="issuetype">    Sub-task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-yellow jira-issue-status-lozenge-indeterminate aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;In Progress&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;jira-issue-status-tooltip-desc&quot;&gt;This issue is being actively worked on at the moment by the assignee.&lt;/span&gt;">In Progress</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="reporter">            Рябцева Анастасия Николаевна
+    </td>
+                                            <td class="creator">            Рябцева Анастасия Николаевна
+    </td>
+                                            <td class="created"> 23/Jul/21 10:13 AM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 23/Jul/21 11:35 AM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Оформление кд уже разработанного. старые чертежи
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9595</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101"></td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00kjr:
+  </td>
+                                            <td class="customfield_10105">      0|i00jis:
+  </td>
+                                            <td class="customfield_10100">HEL Спринт 4</td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    741
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14407" rel="14407" data-issuekey="YAS-105" class="issuerow">
+                                            <td class="project">    9515.YASTREB
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="YAS-105" href="http://jira:8080/browse/YAS-105">YAS-105</a>
+</td>
+                                            <td class="summary"><p>
+                Контроль доработки изд. 9515.04.50
+    </p>
+</td>
+                                            <td class="issuetype">    Task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-yellow jira-issue-status-lozenge-indeterminate aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;In Progress&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;jira-issue-status-tooltip-desc&quot;&gt;This issue is being actively worked on at the moment by the assignee.&lt;/span&gt;">In Progress</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="reporter">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="creator">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="created"> 07/Jul/21 11:19 AM </td>
+                                            <td class="lastViewed"> 07/Jul/21 11:19 AM </td>
+                                            <td class="updated"> 07/Jul/21 11:19 AM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Контроль доработки и сборки изд. 9515.04.50.000
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9515, 9515.04.50</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101"></td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00jif:
+  </td>
+                                            <td class="customfield_10105">      0|i00il0:
+  </td>
+                                            <td class="customfield_10100"></td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    900
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14445" rel="14445" data-issuekey="HEL9595-142" class="issuerow">
+                                            <td class="project">    HEL laboratory
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="HEL9595-142" href="http://jira:8080/browse/HEL9595-142">HEL9595-142</a>
+</td>
+                                            <td class="summary"><p>
+                Детали с логотипами
+    </p>
+</td>
+                                            <td class="issuetype">    Task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-yellow jira-issue-status-lozenge-indeterminate aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;In Progress&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;jira-issue-status-tooltip-desc&quot;&gt;This issue is being actively worked on at the moment by the assignee.&lt;/span&gt;">In Progress</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="reporter">            Рябцева Анастасия Николаевна
+    </td>
+                                            <td class="creator">            Рябцева Анастасия Николаевна
+    </td>
+                                            <td class="created"> 12/Jul/21 3:50 PM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 20/Jul/21 4:50 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">                        <a href="http://jira:8080/secure/attachment/11110/_thumb_11110.png">
+            _thumb_11110.png
+        </a>
+                </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      согласовать с андреем попругой, рябцева и шумский
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9595, HEL</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101">
+            Positioner
+    </td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00jqv:
+  </td>
+                                            <td class="customfield_10105">      0|i00igk:i
+  </td>
+                                            <td class="customfield_10100">HEL Спринт 3, HEL Спринт 4</td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    963
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14177" rel="14177" data-issuekey="HEL9595-73" class="issuerow">
+                                            <td class="project">    HEL laboratory
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="HEL9595-73" href="http://jira:8080/browse/HEL9595-73">HEL9595-73</a>
+</td>
+                                            <td class="summary"><p>
+                Доработка 3D модели 9895
+    </p>
+</td>
+                                            <td class="issuetype">    Task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="reporter">            Якимов Павел Георгиевич
+    </td>
+                                            <td class="creator">            Якимов Павел Георгиевич
+    </td>
+                                            <td class="created"> 09/Jun/21 2:29 PM </td>
+                                            <td class="lastViewed"> 01/Jul/21 10:46 AM </td>
+                                            <td class="updated"> 20/Jul/21 4:46 PM </td>
+                                            <td class="resolutiondate"> 20/Jul/21 4:46 PM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">1</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Убрать лишний компоненты: пусковые 4 шт., экраны линейных приводов 2 шт., линейные приводы 2 шт., кронштейны под линейные приводы 2 шт., опоры под экраны 2 типа, боковые люльки 2 шт., внутренний подшипниковые узлы от боковых люлек, коробка соединителей 2 шт., внутренняя коробка ( в центральной люльке), патронный короб, пулемет, постель.<br/>
+<br/>
+Оставить только поворотную платформу.<br/>
+<br/>
+http://svn/9895_QUAD_TERMINATOR_SW/Work/9895.03.00.000_релиз проекта_20200417/ОПП9895<br/>
+<br/>
+ 
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9595, 9895, HEL, opp, доработка</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101">
+            Positioner
+    </td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00i3b:
+  </td>
+                                            <td class="customfield_10105">      0|i00ige:
+  </td>
+                                            <td class="customfield_10100">HEL Спринт 2, HEL Спринт 3</td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    100
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14451" rel="14451" data-issuekey="HEL9595-147" class="issuerow">
+                                            <td class="project">    HEL laboratory
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="HEL9595-147" href="http://jira:8080/browse/HEL9595-147">HEL9595-147</a>
+</td>
+                                            <td class="summary"><p>
+                Уточнить о готовности деталей для юстировки
+    </p>
+</td>
+                                            <td class="issuetype">    Task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="reporter">            Рябцева Анастасия Николаевна
+    </td>
+                                            <td class="creator">            Рябцева Анастасия Николаевна
+    </td>
+                                            <td class="created"> 12/Jul/21 3:54 PM </td>
+                                            <td class="lastViewed"> 13/Jul/21 10:39 AM </td>
+                                            <td class="updated"> 20/Jul/21 4:46 PM </td>
+                                            <td class="resolutiondate"> 20/Jul/21 4:46 PM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">2</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      у галецкого
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9595, hel</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101">
+            Positioner
+    </td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00js7:
+  </td>
+                                            <td class="customfield_10105">      0|i00ito:
+  </td>
+                                            <td class="customfield_10100">HEL Спринт 3</td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    741
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14337" rel="14337" data-issuekey="HEL9595-102" class="issuerow">
+                                            <td class="project">    HEL laboratory
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="HEL9595-102" href="http://jira:8080/browse/HEL9595-102">HEL9595-102</a>
+</td>
+                                            <td class="summary"><p>
+                Структурирование 9895.03.01.000#Станина
+    </p>
+</td>
+                                            <td class="issuetype">    Task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="reporter">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="creator">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="created"> 28/Jun/21 11:10 AM </td>
+                                            <td class="lastViewed"> 13/Jul/21 3:41 PM </td>
+                                            <td class="updated"> 20/Jul/21 4:45 PM </td>
+                                            <td class="resolutiondate"> 20/Jul/21 4:45 PM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Переименование деталей и корректирование сборочной детали
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9895.03, 9895.63</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101">
+            Структурирование 9895.03/9895.63
+    </td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00j2v:
+  </td>
+                                            <td class="customfield_10105">      0|i00igi:
+  </td>
+                                            <td class="customfield_10100">HEL Спринт 2, HEL Спринт 3</td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    650
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14343" rel="14343" data-issuekey="HEL9595-108" class="issuerow">
+                                            <td class="project">    HEL laboratory
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="HEL9595-108" href="http://jira:8080/browse/HEL9595-108">HEL9595-108</a>
+</td>
+                                            <td class="summary"><p>
+                Структурирование 9895.03.03.100#Узел ВКУ
+    </p>
+</td>
+                                            <td class="issuetype">    Task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="reporter">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="creator">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="created"> 28/Jun/21 1:52 PM </td>
+                                            <td class="lastViewed"> 13/Jul/21 3:40 PM </td>
+                                            <td class="updated"> 15/Jul/21 4:09 PM </td>
+                                            <td class="resolutiondate"> 15/Jul/21 4:09 PM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                                        HEL9595-150,                                                HEL9595-151                        </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Переименование деталей и корректирование сборочного чертежа
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9895.03, 9895.63</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101">
+            Структурирование 9895.03/9895.63
+    </td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00j47:
+  </td>
+                                            <td class="customfield_10105">      0|i00i6s:
+  </td>
+                                            <td class="customfield_10100">HEL Спринт 3</td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    650
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14471" rel="14471" data-issuekey="HEL9595-151" class="issuerow">
+                                            <td class="project">    HEL laboratory
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="HEL9595-151" href="http://jira:8080/browse/HEL9595-151">HEL9595-151</a>
+</td>
+                                            <td class="summary"><p>
+                Структурирование 9895.03.03.300#ВКУ силовое
+    </p>
+</td>
+                                            <td class="issuetype">    Task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="reporter">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="creator">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="created"> 13/Jul/21 3:54 PM </td>
+                                            <td class="lastViewed"> 13/Jul/21 3:54 PM </td>
+                                            <td class="updated"> 15/Jul/21 4:08 PM </td>
+                                            <td class="resolutiondate"> 15/Jul/21 4:08 PM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                                        HEL9595-108                        </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Структурирование твердотельной модели сборки 9895.03.03.300#ВКУ силовое
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9595, 9895.03</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101">
+            Структурирование 9895.03/9895.63
+    </td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00jwn:
+  </td>
+                                            <td class="customfield_10105">      0|i00iws:
+  </td>
+                                            <td class="customfield_10100">HEL Спринт 3</td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    900
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14470" rel="14470" data-issuekey="HEL9595-150" class="issuerow">
+                                            <td class="project">    HEL laboratory
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="HEL9595-150" href="http://jira:8080/browse/HEL9595-150">HEL9595-150</a>
+</td>
+                                            <td class="summary"><p>
+                Структурирование 9895.03.03.200#ВКУ сигнальное
+    </p>
+</td>
+                                            <td class="issuetype">    Task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="reporter">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="creator">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="created"> 13/Jul/21 3:53 PM </td>
+                                            <td class="lastViewed"> 13/Jul/21 3:53 PM </td>
+                                            <td class="updated"> 15/Jul/21 4:08 PM </td>
+                                            <td class="resolutiondate"> 15/Jul/21 4:08 PM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                                        HEL9595-108                        </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Структурирование твердотельной модели сборки 9895.03.03.200#ВКУ сигнальное
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9595, 9895.03</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101">
+            Структурирование 9895.03/9895.63
+    </td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00jwf:
+  </td>
+                                            <td class="customfield_10105">      0|i00iwk:
+  </td>
+                                            <td class="customfield_10100">HEL Спринт 3</td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    900
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14338" rel="14338" data-issuekey="HEL9595-103" class="issuerow">
+                                            <td class="project">    HEL laboratory
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="HEL9595-103" href="http://jira:8080/browse/HEL9595-103">HEL9595-103</a>
+</td>
+                                            <td class="summary"><p>
+                Структурирование 9895.03.01.020#Привод азимутальный
+    </p>
+</td>
+                                            <td class="issuetype">    Task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="reporter">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="creator">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="created"> 28/Jun/21 1:00 PM </td>
+                                            <td class="lastViewed"> 13/Jul/21 4:41 PM </td>
+                                            <td class="updated"> 13/Jul/21 4:41 PM </td>
+                                            <td class="resolutiondate"> 13/Jul/21 4:41 PM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                                        HEL9595-104,                                                HEL9595-105,                                                HEL9595-106,                                                HEL9595-107                        </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Переименование деталей и корректирование сборочной детали
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9895.03, 9895.63</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101">
+            Структурирование 9895.03/9895.63
+    </td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00j33:
+  </td>
+                                            <td class="customfield_10105">      0|i00igj:
+  </td>
+                                            <td class="customfield_10100">HEL Спринт 2, HEL Спринт 3</td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    650
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14342" rel="14342" data-issuekey="HEL9595-107" class="issuerow">
+                                            <td class="project">    HEL laboratory
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="HEL9595-107" href="http://jira:8080/browse/HEL9595-107">HEL9595-107</a>
+</td>
+                                            <td class="summary"><p>
+            <span class="parentIssue">HEL9595-103</span>
+                Структурирование 9895.03.01.710#Крышка
+    </p>
+</td>
+                                            <td class="issuetype">    Sub-task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="reporter">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="creator">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="created"> 28/Jun/21 1:31 PM </td>
+                                            <td class="lastViewed"> 28/Jun/21 1:31 PM </td>
+                                            <td class="updated"> 13/Jul/21 4:42 PM </td>
+                                            <td class="resolutiondate"> 13/Jul/21 4:41 PM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Переименование деталей и корректирование сборочной детали
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9895.03, 9895.63</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101"></td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00j3z:
+  </td>
+                                            <td class="customfield_10105">      0|i00i6k:
+  </td>
+                                            <td class="customfield_10100">HEL Спринт 2, HEL Спринт 3</td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    650
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14341" rel="14341" data-issuekey="HEL9595-106" class="issuerow">
+                                            <td class="project">    HEL laboratory
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="HEL9595-106" href="http://jira:8080/browse/HEL9595-106">HEL9595-106</a>
+</td>
+                                            <td class="summary"><p>
+            <span class="parentIssue">HEL9595-103</span>
+                Структурирование 9895.03.01.130#Ротор
+    </p>
+</td>
+                                            <td class="issuetype">    Sub-task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="reporter">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="creator">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="created"> 28/Jun/21 1:29 PM </td>
+                                            <td class="lastViewed"> 28/Jun/21 1:29 PM </td>
+                                            <td class="updated"> 13/Jul/21 3:31 PM </td>
+                                            <td class="resolutiondate"> 13/Jul/21 3:31 PM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Переименование деталей и корректирование сборочной детали
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9895.03, 9895.63</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101"></td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00j3r:
+  </td>
+                                            <td class="customfield_10105">      0|i00i6c:
+  </td>
+                                            <td class="customfield_10100">HEL Спринт 2, HEL Спринт 3</td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    650
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14340" rel="14340" data-issuekey="HEL9595-105" class="issuerow">
+                                            <td class="project">    HEL laboratory
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="HEL9595-105" href="http://jira:8080/browse/HEL9595-105">HEL9595-105</a>
+</td>
+                                            <td class="summary"><p>
+            <span class="parentIssue">HEL9595-103</span>
+                Структурирование 9895.03.01.050#Редуктор
+    </p>
+</td>
+                                            <td class="issuetype">    Sub-task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="reporter">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="creator">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="created"> 28/Jun/21 1:23 PM </td>
+                                            <td class="lastViewed"> 28/Jun/21 1:23 PM </td>
+                                            <td class="updated"> 13/Jul/21 3:28 PM </td>
+                                            <td class="resolutiondate"> 13/Jul/21 3:28 PM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Переименование деталей и корректирование сборочной детали
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9895.03, 9895.63</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101"></td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00j3j:
+  </td>
+                                            <td class="customfield_10105">      0|i00i64:
+  </td>
+                                            <td class="customfield_10100">HEL Спринт 2, HEL Спринт 3</td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    650
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14339" rel="14339" data-issuekey="HEL9595-104" class="issuerow">
+                                            <td class="project">    HEL laboratory
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="HEL9595-104" href="http://jira:8080/browse/HEL9595-104">HEL9595-104</a>
+</td>
+                                            <td class="summary"><p>
+            <span class="parentIssue">HEL9595-103</span>
+                Структурирование 9895.03.01.120#Узел подшипниковый азимутальный
+    </p>
+</td>
+                                            <td class="issuetype">    Sub-task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="reporter">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="creator">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="created"> 28/Jun/21 1:17 PM </td>
+                                            <td class="lastViewed"> 28/Jun/21 1:17 PM </td>
+                                            <td class="updated"> 13/Jul/21 3:10 PM </td>
+                                            <td class="resolutiondate"> 13/Jul/21 3:10 PM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Переименование деталей и корректирование сборочной детали
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9895.03, 9895.63</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101"></td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00j3b:
+  </td>
+                                            <td class="customfield_10105">      0|i00i5w:
+  </td>
+                                            <td class="customfield_10100">HEL Спринт 2, HEL Спринт 3</td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    650
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14206" rel="14206" data-issuekey="HEL9595-81" class="issuerow">
+                                            <td class="project">    HEL laboratory
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="HEL9595-81" href="http://jira:8080/browse/HEL9595-81">HEL9595-81</a>
+</td>
+                                            <td class="summary"><p>
+                Структурирование файлов 9895.63
+    </p>
+</td>
+                                            <td class="issuetype">    Task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="reporter">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="creator">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="created"> 11/Jun/21 2:10 PM </td>
+                                            <td class="lastViewed"> 13/Jul/21 3:08 PM </td>
+                                            <td class="updated"> 13/Jul/21 3:08 PM </td>
+                                            <td class="resolutiondate"> 13/Jul/21 3:08 PM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                                        HEL9595-109,                                                HEL9595-110,                                                HEL9595-111                        </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Удаление временных файлов, перенесение покупных в Libriary 
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9895, 9895.63, HEL</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101">
+            Positioner
+    </td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00i9r:
+  </td>
+                                            <td class="customfield_10105">      0|i00igf:
+  </td>
+                                            <td class="customfield_10100">HEL Спринт 2, HEL Спринт 3</td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    400
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14346" rel="14346" data-issuekey="HEL9595-111" class="issuerow">
+                                            <td class="project">    HEL laboratory
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="HEL9595-111" href="http://jira:8080/browse/HEL9595-111">HEL9595-111</a>
+</td>
+                                            <td class="summary"><p>
+            <span class="parentIssue">HEL9595-81</span>
+                Структурирование 9895.03.01.010#Вилка
+    </p>
+</td>
+                                            <td class="issuetype">    Sub-task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="reporter">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="creator">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="created"> 28/Jun/21 2:42 PM </td>
+                                            <td class="lastViewed"> 28/Jun/21 2:42 PM </td>
+                                            <td class="updated"> 13/Jul/21 3:04 PM </td>
+                                            <td class="resolutiondate"> 13/Jul/21 3:04 PM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Переименование деталей и корректирование сборочной детали
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9895.03, 9895.63</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101"></td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00j4v:
+  </td>
+                                            <td class="customfield_10105">      0|i00i7g:
+  </td>
+                                            <td class="customfield_10100">HEL Спринт 2, HEL Спринт 3</td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    650
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14345" rel="14345" data-issuekey="HEL9595-110" class="issuerow">
+                                            <td class="project">    HEL laboratory
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="HEL9595-110" href="http://jira:8080/browse/HEL9595-110">HEL9595-110</a>
+</td>
+                                            <td class="summary"><p>
+            <span class="parentIssue">HEL9595-81</span>
+                Структурирование 9895.03.01.410#Основание вилки
+    </p>
+</td>
+                                            <td class="issuetype">    Sub-task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="reporter">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="creator">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="created"> 28/Jun/21 2:41 PM </td>
+                                            <td class="lastViewed"> 28/Jun/21 2:41 PM </td>
+                                            <td class="updated"> 13/Jul/21 2:44 PM </td>
+                                            <td class="resolutiondate"> 13/Jul/21 2:44 PM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Переименование деталей и корректирование сборочного четежа
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9895.03, 9895.63</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101"></td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00j4n:
+  </td>
+                                            <td class="customfield_10105">      0|i00i78:
+  </td>
+                                            <td class="customfield_10100">HEL Спринт 2, HEL Спринт 3</td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    650
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14344" rel="14344" data-issuekey="HEL9595-109" class="issuerow">
+                                            <td class="project">    HEL laboratory
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="HEL9595-109" href="http://jira:8080/browse/HEL9595-109">HEL9595-109</a>
+</td>
+                                            <td class="summary"><p>
+            <span class="parentIssue">HEL9595-81</span>
+                Структурирование 9895.03.01.160#Считывающая головка
+    </p>
+</td>
+                                            <td class="issuetype">    Sub-task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="reporter">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="creator">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="created"> 28/Jun/21 2:40 PM </td>
+                                            <td class="lastViewed"> 28/Jun/21 2:41 PM </td>
+                                            <td class="updated"> 13/Jul/21 1:35 PM </td>
+                                            <td class="resolutiondate"> 13/Jul/21 1:35 PM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Переименование деталей и корректирование сборочной детали
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9895.03, 9895.63</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101"></td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00j4f:
+  </td>
+                                            <td class="customfield_10105">      0|i00i70:
+  </td>
+                                            <td class="customfield_10100">HEL Спринт 2, HEL Спринт 3</td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    650
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14394" rel="14394" data-issuekey="ZORKIR-441" class="issuerow">
+                                            <td class="project">    ZORKI-R
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="ZORKIR-441" href="http://jira:8080/browse/ZORKIR-441">ZORKIR-441</a>
+</td>
+                                            <td class="summary"><p>
+                Подготовка оборудования и проведение полевых испытаний 9899.22
+    </p>
+</td>
+                                            <td class="issuetype">    Task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="reporter">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="creator">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="created"> 06/Jul/21 8:06 AM </td>
+                                            <td class="lastViewed"> 07/Jul/21 8:35 AM </td>
+                                            <td class="updated"> 07/Jul/21 8:35 AM </td>
+                                            <td class="resolutiondate"> 07/Jul/21 8:35 AM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Подготовка оборудования и проведение полевых испытаний 9899.22
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9597, 9899.22</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101"></td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00jfj:
+  </td>
+                                            <td class="customfield_10105">      0|i00ii4:
+  </td>
+                                            <td class="customfield_10100"></td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    900
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14303" rel="14303" data-issuekey="ZORKIR-409" class="issuerow">
+                                            <td class="project">    ZORKI-R
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="ZORKIR-409" href="http://jira:8080/browse/ZORKIR-409">ZORKIR-409</a>
+</td>
+                                            <td class="summary"><p>
+                Заказз &quot;Планок Пикатинни&quot; 
+    </p>
+</td>
+                                            <td class="issuetype">    Task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="reporter">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="creator">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="created"> 23/Jun/21 10:21 AM </td>
+                                            <td class="lastViewed"> 23/Jun/21 10:21 AM </td>
+                                            <td class="updated"> 06/Jul/21 8:05 AM </td>
+                                            <td class="resolutiondate"> 06/Jul/21 8:05 AM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Запуск в производство детали 9590.00.05.207#Планка
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9590.00, 9597, 9899,22</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101"></td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00ivb:
+  </td>
+                                            <td class="customfield_10105">      0|i00i39:
+  </td>
+                                            <td class="customfield_10100">контракт 30  9597_7</td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    800
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14393" rel="14393" data-issuekey="ZORKIR-440" class="issuerow">
+                                            <td class="project">    ZORKI-R
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="ZORKIR-440" href="http://jira:8080/browse/ZORKIR-440">ZORKIR-440</a>
+</td>
+                                            <td class="summary"><p>
+                Заказ комплектующего материала на изд. 9899.22.00.000#Модуль радиолокационный ZORKI-R 3D
+    </p>
+</td>
+                                            <td class="issuetype">    Task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="reporter">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="creator">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="created"> 06/Jul/21 8:03 AM </td>
+                                            <td class="lastViewed"> 06/Jul/21 8:04 AM </td>
+                                            <td class="updated"> 06/Jul/21 8:04 AM </td>
+                                            <td class="resolutiondate"> 06/Jul/21 8:04 AM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Заказ термопасты и термопластин на изд. 9899.22
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9597, 9899.22</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101"></td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00jfb:
+  </td>
+                                            <td class="customfield_10105">      0|i00ihw:
+  </td>
+                                            <td class="customfield_10100"></td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    650
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14276" rel="14276" data-issuekey="ZORKIR-394" class="issuerow">
+                                            <td class="project">    ZORKI-R
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="ZORKIR-394" href="http://jira:8080/browse/ZORKIR-394">ZORKIR-394</a>
+</td>
+                                            <td class="summary"><p>
+                Заказ антенн, ребер и экранов луча
+    </p>
+</td>
+                                            <td class="issuetype">    Task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="reporter">            Рябцева Анастасия Николаевна
+    </td>
+                                            <td class="creator">            Рябцева Анастасия Николаевна
+    </td>
+                                            <td class="created"> 18/Jun/21 1:58 PM </td>
+                                            <td class="lastViewed"> 05/Jul/21 1:28 PM </td>
+                                            <td class="updated"> 05/Jul/21 1:53 PM </td>
+                                            <td class="resolutiondate"> 05/Jul/21 1:53 PM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Полный комплект.<br/>
+ согласовать с рябцевой. заказывать после 23.06.2021
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9597, 9899.22</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101"></td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00ipb:
+  </td>
+                                            <td class="customfield_10105">      0|i00hs8:
+  </td>
+                                            <td class="customfield_10100">контракт 30  9597_5, контракт 30  9597_6</td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    863
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14267" rel="14267" data-issuekey="HEL9595-88" class="issuerow">
+                                            <td class="project">    HEL laboratory
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="HEL9595-88" href="http://jira:8080/browse/HEL9595-88">HEL9595-88</a>
+</td>
+                                            <td class="summary"><p>
+                Запуск в производство деталей крепления оптики и телескопа
+    </p>
+</td>
+                                            <td class="issuetype">    Task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="reporter">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="creator">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="created"> 18/Jun/21 12:01 PM </td>
+                                            <td class="lastViewed"> 01/Jul/21 10:45 AM </td>
+                                            <td class="updated"> 01/Jul/21 10:45 AM </td>
+                                            <td class="resolutiondate"> 01/Jul/21 10:45 AM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Разработка окончательных вариантов деталей для крепления оптики и телескопа, а также запуск их в производство
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9895, HEL</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101">
+            Positioner
+    </td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00inb:
+  </td>
+                                            <td class="customfield_10105">      0|i00hq0:
+  </td>
+                                            <td class="customfield_10100"></td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    900
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14351" rel="14351" data-issuekey="HEL9595-114" class="issuerow">
+                                            <td class="project">    HEL laboratory
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="HEL9595-114" href="http://jira:8080/browse/HEL9595-114">HEL9595-114</a>
+</td>
+                                            <td class="summary"><p>
+                Разработка чертежей и рендеров для презентации изделия
+    </p>
+</td>
+                                            <td class="issuetype">    Task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="reporter">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="creator">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="created"> 28/Jun/21 4:48 PM </td>
+                                            <td class="lastViewed"> 01/Jul/21 10:44 AM </td>
+                                            <td class="updated"> 01/Jul/21 10:44 AM </td>
+                                            <td class="resolutiondate"> 01/Jul/21 10:44 AM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Создание чертежей, твердотельных сборок для презентации изделия заказчикам
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9595, 9895.03</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101"></td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00j5z:
+  </td>
+                                            <td class="customfield_10105">      0|i00i8k:
+  </td>
+                                            <td class="customfield_10100"></td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    900
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14220" rel="14220" data-issuekey="HEL9595-83" class="issuerow">
+                                            <td class="project">    HEL laboratory
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="HEL9595-83" href="http://jira:8080/browse/HEL9595-83">HEL9595-83</a>
+</td>
+                                            <td class="summary"><p>
+                Проработка твердотельной модели верхней планки
+    </p>
+</td>
+                                            <td class="issuetype">    Task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="reporter">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="creator">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="created"> 15/Jun/21 10:48 AM </td>
+                                            <td class="lastViewed"> 01/Jul/21 10:44 AM </td>
+                                            <td class="updated"> 01/Jul/21 10:44 AM </td>
+                                            <td class="resolutiondate"> 01/Jul/21 10:44 AM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Проработка твердотельной модели планки для размещения оптики на Quad
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9895.03, HEL</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101">
+            Positioner
+    </td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00icv:
+  </td>
+                                            <td class="customfield_10105">      0|i00hfk:
+  </td>
+                                            <td class="customfield_10100"></td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    800
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14335" rel="14335" data-issuekey="HEL9595-101" class="issuerow">
+                                            <td class="project">    HEL laboratory
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="HEL9595-101" href="http://jira:8080/browse/HEL9595-101">HEL9595-101</a>
+</td>
+                                            <td class="summary"><p>
+                Структурирование 9895.03.01.220#Угломестный привод
+    </p>
+</td>
+                                            <td class="issuetype">    Task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="reporter">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="creator">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="created"> 28/Jun/21 10:53 AM </td>
+                                            <td class="lastViewed"> 01/Jul/21 11:03 AM </td>
+                                            <td class="updated"> 01/Jul/21 10:43 AM </td>
+                                            <td class="resolutiondate"> 01/Jul/21 10:43 AM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                                        HEL9595-112                        </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Переименование деталей и корректирование сборочной модели
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9895.03, 9895.63</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101">
+            Структурирование 9895.03/9895.63
+    </td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00j2f:
+  </td>
+                                            <td class="customfield_10105">      0|i00i50:
+  </td>
+                                            <td class="customfield_10100"></td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    800
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14231" rel="14231" data-issuekey="ZORKIR-365" class="issuerow">
+                                            <td class="project">    ZORKI-R
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="ZORKIR-365" href="http://jira:8080/browse/ZORKIR-365">ZORKIR-365</a>
+</td>
+                                            <td class="summary"><p>
+                Заказ визира
+    </p>
+</td>
+                                            <td class="issuetype">    Task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="reporter">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="creator">            Кудренок Дмитрий Александрович
+    </td>
+                                            <td class="created"> 16/Jun/21 11:56 AM </td>
+                                            <td class="lastViewed"> 16/Jun/21 11:56 AM </td>
+                                            <td class="updated"> 29/Jun/21 9:30 AM </td>
+                                            <td class="resolutiondate"> 29/Jun/21 9:30 AM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Написание служебной на заказ визира с Mil-dot сеткой
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9597, 9899</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101"></td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00ifb:
+  </td>
+                                            <td class="customfield_10105">      0|i00hrw:
+  </td>
+                                            <td class="customfield_10100">контракт 30  9597_5, контракт 30  9597_6</td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    650
+</td>
+                    </tr>
+                </tbody>
+    </table>
+    </issuetable-web-component>
+    <div class="end-of-stable-message"></div>
+            <table border="1" >
+<tr>
+    <td bgcolor="#f5f5f5" colspan="48"><font size="1">
+        Generated at Wed Jul 28 08:31:21 MSK 2021 by Кудренок Дмитрий Александрович using Jira 8.2.2#802002-sha1:62e11fd4e3e0854fa206c8b64c089caf8e49350a.
+    </font></td>
+</tr>
+</table>
+
+</body>
+</html>
