@@ -101,11 +101,12 @@ class JiraReport:
                                    + "\nКоличество отработаных часов: " + self.__work_time)
         self.__calculate_total_hours_to_projects()
         self.__chekc_time()
-        self.__table = self.__mydoc.add_table(rows=(len(self.__hours_projects) + 1), cols=3)
+        self.__table = self.__mydoc.add_table(rows=(len(self.__hours_projects) + 1), cols=4)
         self.__table.style = 'Table Grid'
         self.__table.cell(0, 0).text = '№'
         self.__table.cell(0, 1).text = 'Проект'
         self.__table.cell(0, 2).text = 'Время, ч'
+        self.__table.cell(0, 3).text = 'Шифр затрат'
         self.__fill_table_all_hours()
         self.__mydoc.add_paragraph("\nПодробная информация по ссылке: http://jira:8080/issues/?filter=11201")
         self.__mydoc.add_paragraph("Руководитель: Шумский А.П")
