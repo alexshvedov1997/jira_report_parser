@@ -100,6 +100,7 @@ class JiraReport:
                                    + "\nГод: {}".format(datetime.datetime.now().year)
                                    + "\nКоличество отработаных часов: " + self.__work_time)
         self.__calculate_total_hours_to_projects()
+        self.__chekc_time()
         self.__table = self.__mydoc.add_table(rows=(len(self.__hours_projects) + 1), cols=3)
         self.__table.style = 'Table Grid'
         self.__table.cell(0, 0).text = '№'
@@ -181,8 +182,6 @@ class JiraReport:
                 self.__hours_projects[-1][str(tuple(self.__hours_projects[-1])[0])] + \
                 (int(self.__work_time) - sum_proverka)
 
- #       print(self.__hours_projects)
-
     def __fill_table_all_hours(self):
   #      print("List", self.__hours_projects)
         for row, elem in enumerate(self.__hours_projects, 1):
@@ -194,3 +193,16 @@ class JiraReport:
                      self.__table.cell(row, clmn).text = tuple_[0]
                  elif clmn == 2:
                     self.__table.cell(row, clmn).text = str(elem[tuple_[0]])
+
+    def __chekc_time(self):
+        print(self.__hours_projects)
+        key_ = list()
+        new_lst = list()
+        for elem in self.__hours_projects:
+            key_.append(tuple(elem)[0])
+        for pos,elem in enumerate(self.__hours_projects):
+            if elem[key_[pos]] == 0:
+                continue
+            new_lst.append(elem)
+        self.__hours_projects.clear()
+        self.__hours_projects = deepcopy(new_lst)
