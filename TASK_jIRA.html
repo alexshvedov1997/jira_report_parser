@@ -1,0 +1,2013 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+      xmlns:x="urn:schemas-microsoft-com:office:excel"
+      xmlns="http://www.w3.org/TR/REC-html40">
+    <head>
+        <title>Task monthly report (Jira)</title>
+        <style type="text/css">
+         table {
+             mso-displayed-decimal-separator:"\.";
+             mso-displayed-thousand-separator:"\,";
+         }
+         body
+         {
+             margin: 0px;
+             font-size: 12px;
+             font-family: Arial, sans-serif;
+             color:black;
+         }
+
+        </style>
+        <META HTTP-EQUIV="Content-Type" Content="application/vnd.ms-excel; charset=UTF-8">
+        <!-- JRA-7598 - ensure fields (e.g. description) occupy only one cell - even fields containing newlines. -->
+        <!--
+             Vertical align all cells to the top, in order to align all issue rows of issuetable to the top,
+             since Excel does not use or save the css files it is hardcoded here.
+           -->
+        <style>
+         @page
+         {
+             mso-page-orientation:landscape;
+             margin:.25in .25in .5in .25in;
+             mso-header-margin:.5in;
+             mso-footer-margin:.25in;
+             mso-footer-data:"&R&P of &N";
+             mso-horizontal-page-align:center;
+             mso-vertical-page-align:center;
+         }
+
+         td.issuekey,
+         td.issuetype,
+         td.status {
+             mso-style-parent: "";
+             mso-number-format: \@;
+             text-align: left;
+         }
+         br
+         {
+             mso-data-placement:same-cell;
+         }
+
+         td
+         {
+             vertical-align: top;
+         }
+        </style>
+
+        <!--[if gte mso 9]><xml>
+            <x:ExcelWorkbook>
+            <x:ExcelWorksheets>
+            <x:ExcelWorksheet>
+            <x:Name>general_report</x:Name>
+            <x:WorksheetOptions>
+            <x:Print>
+            <x:ValidPrinterInfo/>
+            </x:Print>
+            </x:WorksheetOptions>
+            </x:ExcelWorksheet>
+            </x:ExcelWorksheets>
+            </x:ExcelWorkbook>
+            </xml><![endif]-->
+    </head>
+    <body>
+
+        <table border="1">
+            <tr bgcolor="#0747a6" height="30">
+                <td colspan="48">
+                    <img src="http://jira:8080/images/jira-software.png" width="57" height="30" border="0" alt="Task monthly report (Jira)">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="48">
+                    <a href="http://jira:8080/issues/?filter=11201">Task monthly report (Jira)</a>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="48">
+                    Displaying <strong>21</strong> issues at <strong>30/Jul/21 8:24 AM</strong>.
+                </td>
+            </tr>
+        </table>
+
+        
+
+
+                            <issuetable-web-component>
+                <table id="issuetable"  border="1" cellpadding="3" cellspacing="1" width="100%">
+                        <thead>
+        <tr class="rowHeader">
+            
+                                                            <th class="colHeaderLink headerrow-project" data-id="project">
+                            Project
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-issuekey" data-id="issuekey">
+                            Key
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-summary" data-id="summary">
+                            Summary
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-issuetype" data-id="issuetype">
+                            Issue Type
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-status" data-id="status">
+                            Status
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-priority" data-id="priority">
+                            Priority
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-resolution" data-id="resolution">
+                            Resolution
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-assignee" data-id="assignee">
+                            Assignee
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-reporter" data-id="reporter">
+                            Reporter
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-creator" data-id="creator">
+                            Creator
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-created" data-id="created">
+                            Created
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-lastViewed" data-id="lastViewed">
+                            Last Viewed
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-updated" data-id="updated">
+                            Updated
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-resolutiondate" data-id="resolutiondate">
+                            Resolved
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-versions" data-id="versions">
+                            Affects Version/s
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-fixVersions" data-id="fixVersions">
+                            Fix Version/s
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-components" data-id="components">
+                            Component/s
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-duedate" data-id="duedate">
+                            Due Date
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-votes" data-id="votes">
+                            Votes
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-watches" data-id="watches">
+                            Watchers
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-thumbnail" data-id="thumbnail">
+                            Images
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-timeoriginalestimate" data-id="timeoriginalestimate">
+                            Original Estimate
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-timeestimate" data-id="timeestimate">
+                            Remaining Estimate
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-timespent" data-id="timespent">
+                            Time Spent
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-workratio" data-id="workratio">
+                            Work Ratio
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-subtasks" data-id="subtasks">
+                            Sub-Tasks
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-issuelinks" data-id="issuelinks">
+                            Linked Issues
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-environment" data-id="environment">
+                            Environment
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-description" data-id="description">
+                            Description
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-security" data-id="security">
+                            Security Level
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-progress" data-id="progress">
+                            Progress
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-aggregateprogress" data-id="aggregateprogress">
+                            Σ Progress
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-aggregatetimespent" data-id="aggregatetimespent">
+                            Σ Time Spent
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-aggregatetimeestimate" data-id="aggregatetimeestimate">
+                            Σ Remaining Estimate
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-aggregatetimeoriginalestimate" data-id="aggregatetimeoriginalestimate">
+                            Σ Original Estimate
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-labels" data-id="labels">
+                            Labels
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10104" data-id="customfield_10104">
+                            Epic Color
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10101" data-id="customfield_10101">
+                            Epic Link
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10103" data-id="customfield_10103">
+                            Epic Name
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10102" data-id="customfield_10102">
+                            Epic Status
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10200" data-id="customfield_10200">
+                            Flagged
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10300" data-id="customfield_10300">
+                            Global Rank
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10105" data-id="customfield_10105">
+                            Rank
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10100" data-id="customfield_10100">
+                            Sprint
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10106" data-id="customfield_10106">
+                            Story Points
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10400" data-id="customfield_10400">
+                            Worker name
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10000" data-id="customfield_10000">
+                            Development
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10301" data-id="customfield_10301">
+                            weight
+                                                    </th>
+                                                                    </tr>
+    </thead>
+    <tbody>
+                    
+
+                <tr id="issuerow14603" rel="14603" data-issuekey="ZORKIO-34" class="issuerow">
+                                            <td class="project">    9590.ZORKI-O
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="ZORKIO-34" href="http://jira:8080/browse/ZORKIO-34">ZORKIO-34</a>
+</td>
+                                            <td class="summary"><p>
+                Материнская плата 9596#####
+    </p>
+</td>
+                                            <td class="issuetype">    Task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-yellow jira-issue-status-lozenge-indeterminate aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;In Progress&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;jira-issue-status-tooltip-desc&quot;&gt;This issue is being actively worked on at the moment by the assignee.&lt;/span&gt;">In Progress</span>    </td>
+                                            <td class="priority">           High
+    </td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="reporter">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="creator">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="created"> 29/Jul/21 8:08 AM </td>
+                                            <td class="lastViewed"> 29/Jul/21 8:10 AM </td>
+                                            <td class="updated"> 29/Jul/21 8:10 AM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                                        ZORKIO-35                        </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Разводка материнской платы
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9597</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101"></td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00kpz:
+  </td>
+                                            <td class="customfield_10105">      0|i00jp0:
+  </td>
+                                            <td class="customfield_10100"></td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    700
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14439" rel="14439" data-issuekey="BIN-108" class="issuerow">
+                                            <td class="project">    9600.BINOCULARS
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="BIN-108" href="http://jira:8080/browse/BIN-108">BIN-108</a>
+</td>
+                                            <td class="summary"><p>
+                Дополнить таблицу номенклатуры
+    </p>
+</td>
+                                            <td class="issuetype">    Task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-yellow jira-issue-status-lozenge-indeterminate aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;In Progress&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;jira-issue-status-tooltip-desc&quot;&gt;This issue is being actively worked on at the moment by the assignee.&lt;/span&gt;">In Progress</span>    </td>
+                                            <td class="priority">           High
+    </td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="reporter">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="creator">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="created"> 12/Jul/21 7:51 AM </td>
+                                            <td class="lastViewed"> 20/Jul/21 12:01 PM </td>
+                                            <td class="updated"> 12/Jul/21 7:52 AM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Дополнить таблицу номенклатуры
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9600</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101"></td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00jpj:
+  </td>
+                                            <td class="customfield_10105">      0|i00iro:
+  </td>
+                                            <td class="customfield_10100"></td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    700
+</td>
+                    </tr>
+
+
+                <tr id="issuerow13773" rel="13773" data-issuekey="ORVS-880" class="issuerow">
+                                            <td class="project">    ORVS
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="ORVS-880" href="http://jira:8080/browse/ORVS-880">ORVS-880</a>
+</td>
+                                            <td class="summary"><p>
+                Оформление КД на плату 9515.03.12.200
+    </p>
+</td>
+                                            <td class="issuetype">    Task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="reporter">            Рыбчинский Андрей Александрович
+    </td>
+                                            <td class="creator">            Рыбчинский Андрей Александрович
+    </td>
+                                            <td class="created"> 06/Apr/21 8:57 AM </td>
+                                            <td class="lastViewed"> 29/Jul/21 8:06 AM </td>
+                                            <td class="updated"> 29/Jul/21 8:06 AM </td>
+                                            <td class="resolutiondate"> 29/Jul/21 8:06 AM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    30/Apr/21
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate">57600</td>
+                                            <td class="timespent">60</td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                                        ORVS-901,                                                ORVS-902,                                                ORVS-903,                                                ORVS-904                        </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      проверить имеющееся  КД, собрать нормальный проект, вывести нормальные ПДФы
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     0%
+</td>
+                                            <td class="aggregateprogress">     0%
+</td>
+                                            <td class="aggregatetimespent">60</td>
+                                            <td class="aggregatetimeestimate">57600</td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    ZORKI</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101"></td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00glz:
+  </td>
+                                            <td class="customfield_10105">      0|i00fr7:
+  </td>
+                                            <td class="customfield_10100"></td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    2,199
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14489" rel="14489" data-issuekey="ZORKII-624" class="issuerow">
+                                            <td class="project">    ZORKI-O
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="ZORKII-624" href="http://jira:8080/browse/ZORKII-624">ZORKII-624</a>
+</td>
+                                            <td class="summary"><p>
+                Создание страницы в jira и добавление парсера
+    </p>
+</td>
+                                            <td class="issuetype">    Task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="reporter">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="creator">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="created"> 15/Jul/21 8:39 AM </td>
+                                            <td class="lastViewed"> 29/Jul/21 8:06 AM </td>
+                                            <td class="updated"> 29/Jul/21 8:06 AM </td>
+                                            <td class="resolutiondate"> 29/Jul/21 8:06 AM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Создание страницы в jira и добавление парсера
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9597</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101"></td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00k0n:
+  </td>
+                                            <td class="customfield_10105">      0|i00j0s:
+  </td>
+                                            <td class="customfield_10100"></td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    700
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14543" rel="14543" data-issuekey="ORVS-904" class="issuerow">
+                                            <td class="project">    ORVS
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="ORVS-904" href="http://jira:8080/browse/ORVS-904">ORVS-904</a>
+</td>
+                                            <td class="summary"><p>
+            <span class="parentIssue">ORVS-880</span>
+                Оформление СБ
+    </p>
+</td>
+                                            <td class="issuetype">    Sub-task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="reporter">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="creator">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="created"> 19/Jul/21 9:21 AM </td>
+                                            <td class="lastViewed"> 29/Jul/21 8:06 AM </td>
+                                            <td class="updated"> 29/Jul/21 8:06 AM </td>
+                                            <td class="resolutiondate"> 29/Jul/21 8:06 AM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Оформление СБ
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9597</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101"></td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00kcn:
+  </td>
+                                            <td class="customfield_10105">      0|i00jcs:
+  </td>
+                                            <td class="customfield_10100"></td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    700
+</td>
+                    </tr>
+
+
+                <tr id="issuerow13867" rel="13867" data-issuekey="ZORKII-616" class="issuerow">
+                                            <td class="project">    ZORKI-O
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="ZORKII-616" href="http://jira:8080/browse/ZORKII-616">ZORKII-616</a>
+</td>
+                                            <td class="summary"><p>
+                Написание новой версии прошивки на 9899.20.00.210 
+    </p>
+</td>
+                                            <td class="issuetype">    Task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="reporter">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="creator">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="created"> 03/May/21 8:10 AM </td>
+                                            <td class="lastViewed"> 20/Jul/21 12:01 PM </td>
+                                            <td class="updated"> 20/Jul/21 12:01 PM </td>
+                                            <td class="resolutiondate"> 20/Jul/21 12:01 PM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                                        ZORKII-617,                                                ZORKII-618,                                                ZORKII-619                        </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Написание новой версии прошивки на 9899.20.00.21
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9899</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101"></td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00h6v:
+  </td>
+                                            <td class="customfield_10105">      0|i00gbs:
+  </td>
+                                            <td class="customfield_10100"></td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    600
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14492" rel="14492" data-issuekey="ORVS-903" class="issuerow">
+                                            <td class="project">    ORVS
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="ORVS-903" href="http://jira:8080/browse/ORVS-903">ORVS-903</a>
+</td>
+                                            <td class="summary"><p>
+            <span class="parentIssue">ORVS-880</span>
+                Оформить ВП на плату 9515.03.12.200
+    </p>
+</td>
+                                            <td class="issuetype">    Sub-task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="reporter">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="creator">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="created"> 16/Jul/21 8:00 AM </td>
+                                            <td class="lastViewed"> 19/Jul/21 9:21 AM </td>
+                                            <td class="updated"> 19/Jul/21 9:21 AM </td>
+                                            <td class="resolutiondate"> 19/Jul/21 9:21 AM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Оформить ВП на плату 9515.03.12.200
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9515</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101"></td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00k1b:
+  </td>
+                                            <td class="customfield_10105">      0|i00j1g:
+  </td>
+                                            <td class="customfield_10100"></td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    700
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14438" rel="14438" data-issuekey="ZORKII-623" class="issuerow">
+                                            <td class="project">    ZORKI-O
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="ZORKII-623" href="http://jira:8080/browse/ZORKII-623">ZORKII-623</a>
+</td>
+                                            <td class="summary"><p>
+                Написать парсер для создания отчетов Jira
+    </p>
+</td>
+                                            <td class="issuetype">    Task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           High
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="reporter">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="creator">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="created"> 12/Jul/21 7:51 AM </td>
+                                            <td class="lastViewed"> 19/Jul/21 9:20 AM </td>
+                                            <td class="updated"> 19/Jul/21 9:20 AM </td>
+                                            <td class="resolutiondate"> 19/Jul/21 9:20 AM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Написать парсер для создания отчетов Jira
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9590, 9597, 9600, 9899</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101"></td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00jpb:
+  </td>
+                                            <td class="customfield_10105">      0|i00irg:
+  </td>
+                                            <td class="customfield_10100"></td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    700
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14488" rel="14488" data-issuekey="ORVS-902" class="issuerow">
+                                            <td class="project">    ORVS
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="ORVS-902" href="http://jira:8080/browse/ORVS-902">ORVS-902</a>
+</td>
+                                            <td class="summary"><p>
+            <span class="parentIssue">ORVS-880</span>
+                Оформление перечня элементов на 9515.03.12.200
+    </p>
+</td>
+                                            <td class="issuetype">    Sub-task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="reporter">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="creator">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="created"> 15/Jul/21 8:37 AM </td>
+                                            <td class="lastViewed"> 16/Jul/21 7:59 AM </td>
+                                            <td class="updated"> 16/Jul/21 7:59 AM </td>
+                                            <td class="resolutiondate"> 16/Jul/21 7:59 AM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Оформление перечня элементов на 9515.03.12.200
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9515</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101"></td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00k0f:
+  </td>
+                                            <td class="customfield_10105">      0|i00j0k:
+  </td>
+                                            <td class="customfield_10100"></td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    700
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14480" rel="14480" data-issuekey="ORVS-901" class="issuerow">
+                                            <td class="project">    ORVS
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="ORVS-901" href="http://jira:8080/browse/ORVS-901">ORVS-901</a>
+</td>
+                                            <td class="summary"><p>
+            <span class="parentIssue">ORVS-880</span>
+                Оформление схемы электрической принципиальной 9515.03.12.200 согласно ГОСТ
+    </p>
+</td>
+                                            <td class="issuetype">    Sub-task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="reporter">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="creator">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="created"> 14/Jul/21 10:22 AM </td>
+                                            <td class="lastViewed"> 15/Jul/21 8:37 AM </td>
+                                            <td class="updated"> 15/Jul/21 8:37 AM </td>
+                                            <td class="resolutiondate"> 15/Jul/21 8:37 AM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Оформление схемы электрической принципиальной 9515.03.12.200 согласно ГОСТ
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9515</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101"></td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00jyn:
+  </td>
+                                            <td class="customfield_10105">      0|i00iys:
+  </td>
+                                            <td class="customfield_10100"></td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    700
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14395" rel="14395" data-issuekey="ZORKII-620" class="issuerow">
+                                            <td class="project">    ZORKI-O
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="ZORKII-620" href="http://jira:8080/browse/ZORKII-620">ZORKII-620</a>
+</td>
+                                            <td class="summary"><p>
+                Заполнение номенклатуры excel
+    </p>
+</td>
+                                            <td class="issuetype">    Task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="reporter">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="creator">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="created"> 06/Jul/21 9:14 AM </td>
+                                            <td class="lastViewed"> 12/Jul/21 7:48 AM </td>
+                                            <td class="updated"> 12/Jul/21 7:48 AM </td>
+                                            <td class="resolutiondate"> 12/Jul/21 7:48 AM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                                        ZORKII-621                        </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Заполнение номенклатуры excel
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9899</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101"></td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00jfr:
+  </td>
+                                            <td class="customfield_10105">      0|i00iic:
+  </td>
+                                            <td class="customfield_10100"></td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    700
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14405" rel="14405" data-issuekey="BIN-103" class="issuerow">
+                                            <td class="project">    9600.BINOCULARS
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="BIN-103" href="http://jira:8080/browse/BIN-103">BIN-103</a>
+</td>
+                                            <td class="summary"><p>
+            <span class="parentIssue">BIN-98</span>
+                Изменить распиновку жгутов 9600.01.20.180 и измение нумерации ответных частей
+    </p>
+</td>
+                                            <td class="issuetype">    Sub-task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="reporter">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="creator">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="created"> 07/Jul/21 9:43 AM </td>
+                                            <td class="lastViewed"> 12/Jul/21 7:48 AM </td>
+                                            <td class="updated"> 12/Jul/21 7:48 AM </td>
+                                            <td class="resolutiondate"> 12/Jul/21 7:48 AM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Изменить распиновку жгутов 9600.01.20.180 и измение нумерации ответных частей
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9600</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101"></td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00jhz:
+  </td>
+                                            <td class="customfield_10105">      0|i00ikk:
+  </td>
+                                            <td class="customfield_10100"></td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    700
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14432" rel="14432" data-issuekey="ZORKII-622" class="issuerow">
+                                            <td class="project">    ZORKI-O
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="ZORKII-622" href="http://jira:8080/browse/ZORKII-622">ZORKII-622</a>
+</td>
+                                            <td class="summary"><p>
+                Оформление данных испытаний локатора
+    </p>
+</td>
+                                            <td class="issuetype">    Task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Highest
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="reporter">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="creator">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="created"> 09/Jul/21 8:20 AM </td>
+                                            <td class="lastViewed"> 09/Jul/21 1:10 PM </td>
+                                            <td class="updated"> 09/Jul/21 1:10 PM </td>
+                                            <td class="resolutiondate"> 09/Jul/21 1:10 PM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Оформление данных испытаний локатора
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9597</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101"></td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00jnz:
+  </td>
+                                            <td class="customfield_10105">      0|i00iq4:
+  </td>
+                                            <td class="customfield_10100"></td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    700
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14396" rel="14396" data-issuekey="BIN-98" class="issuerow">
+                                            <td class="project">    9600.BINOCULARS
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="BIN-98" href="http://jira:8080/browse/BIN-98">BIN-98</a>
+</td>
+                                            <td class="summary"><p>
+                Доработать схему соединений
+    </p>
+</td>
+                                            <td class="issuetype">    Task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="reporter">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="creator">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="created"> 06/Jul/21 9:17 AM </td>
+                                            <td class="lastViewed"> 09/Jul/21 8:19 AM </td>
+                                            <td class="updated"> 09/Jul/21 8:19 AM </td>
+                                            <td class="resolutiondate"> 09/Jul/21 8:19 AM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                                        BIN-103                        </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Доработать схему соединений
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9600</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101"></td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00jfz:
+  </td>
+                                            <td class="customfield_10105">      0|i00iik:
+  </td>
+                                            <td class="customfield_10100"></td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    700
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14420" rel="14420" data-issuekey="ZORKII-621" class="issuerow">
+                                            <td class="project">    ZORKI-O
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="ZORKII-621" href="http://jira:8080/browse/ZORKII-621">ZORKII-621</a>
+</td>
+                                            <td class="summary"><p>
+            <span class="parentIssue">ZORKII-620</span>
+                Создать страничку в Jira номенклатура отдела
+    </p>
+</td>
+                                            <td class="issuetype">    Sub-task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="reporter">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="creator">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="created"> 08/Jul/21 8:26 AM </td>
+                                            <td class="lastViewed"> 09/Jul/21 8:19 AM </td>
+                                            <td class="updated"> 09/Jul/21 8:19 AM </td>
+                                            <td class="resolutiondate"> 09/Jul/21 8:19 AM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Создать страничку в Jira номенклатура отдела
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9590, 9597, 9600, 9896, 9899</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101"></td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00jlb:
+  </td>
+                                            <td class="customfield_10105">      0|i00ing:
+  </td>
+                                            <td class="customfield_10100"></td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    700
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14404" rel="14404" data-issuekey="BIN-102" class="issuerow">
+                                            <td class="project">    9600.BINOCULARS
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="BIN-102" href="http://jira:8080/browse/BIN-102">BIN-102</a>
+</td>
+                                            <td class="summary"><p>
+                Переделать жгут 9600.01.50.180
+    </p>
+</td>
+                                            <td class="issuetype">    Task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="reporter">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="creator">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="created"> 06/Jul/21 1:34 PM </td>
+                                            <td class="lastViewed"> 07/Jul/21 8:27 AM </td>
+                                            <td class="updated"> 07/Jul/21 8:27 AM </td>
+                                            <td class="resolutiondate"> 07/Jul/21 8:27 AM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Перепутаны на RS422 Rx и Tx
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9600</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101"></td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00jhr:
+  </td>
+                                            <td class="customfield_10105">      0|i00ikc:
+  </td>
+                                            <td class="customfield_10100"></td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    700
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14378" rel="14378" data-issuekey="ZORKIO-31" class="issuerow">
+                                            <td class="project">    9590.ZORKI-O
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="ZORKIO-31" href="http://jira:8080/browse/ZORKIO-31">ZORKIO-31</a>
+</td>
+                                            <td class="summary"><p>
+                Отправить на монтаж платы 9590.01.01.170 И 9896.01.01.170
+    </p>
+</td>
+                                            <td class="issuetype">    Task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="reporter">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="creator">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="created"> 05/Jul/21 9:12 AM </td>
+                                            <td class="lastViewed"> 06/Jul/21 9:16 AM </td>
+                                            <td class="updated"> 06/Jul/21 9:16 AM </td>
+                                            <td class="resolutiondate"> 06/Jul/21 9:16 AM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Отправить на монтаж платы 9590.01.01.170 И 9896.01.01.170
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9590, 9596, 9597, 9896</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101"></td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00jbz:
+  </td>
+                                            <td class="customfield_10105">      0|i00iek:
+  </td>
+                                            <td class="customfield_10100"></td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    700
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14357" rel="14357" data-issuekey="ANTIDRON-215" class="issuerow">
+                                            <td class="project">    9896.ANTIDRON SYSTEM
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="ANTIDRON-215" href="http://jira:8080/browse/ANTIDRON-215">ANTIDRON-215</a>
+</td>
+                                            <td class="summary"><p>
+                Составить СП на плату 9896.01.01.170
+    </p>
+</td>
+                                            <td class="issuetype">    Task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="reporter">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="creator">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="created"> 30/Jun/21 8:26 AM </td>
+                                            <td class="lastViewed"> 06/Jul/21 9:14 AM </td>
+                                            <td class="updated"> 06/Jul/21 9:14 AM </td>
+                                            <td class="resolutiondate"> 06/Jul/21 9:14 AM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Составить СП на плату 9896.01.01.170
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9596, 9896</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101"></td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00j7b:
+  </td>
+                                            <td class="customfield_10105">      0|i00i9w:
+  </td>
+                                            <td class="customfield_10100"></td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    700
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14356" rel="14356" data-issuekey="ZORKIO-30" class="issuerow">
+                                            <td class="project">    9590.ZORKI-O
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="ZORKIO-30" href="http://jira:8080/browse/ZORKIO-30">ZORKIO-30</a>
+</td>
+                                            <td class="summary"><p>
+                Составление СП 9590.01.01.150
+    </p>
+</td>
+                                            <td class="issuetype">    Task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           High
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="reporter">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="creator">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="created"> 29/Jun/21 3:17 PM </td>
+                                            <td class="lastViewed"> 05/Jul/21 9:11 AM </td>
+                                            <td class="updated"> 05/Jul/21 9:11 AM </td>
+                                            <td class="resolutiondate"> 05/Jul/21 9:11 AM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Составление СП 9590.01.01.150
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9590</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101"></td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00j73:
+  </td>
+                                            <td class="customfield_10105">      0|i00i9o:
+  </td>
+                                            <td class="customfield_10100"></td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    700
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14360" rel="14360" data-issuekey="ZORKIR-426" class="issuerow">
+                                            <td class="project">    ZORKI-R
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="ZORKIR-426" href="http://jira:8080/browse/ZORKIR-426">ZORKIR-426</a>
+</td>
+                                            <td class="summary"><p>
+                 Корректировка инструкции по настройке модуля позиционирования радиолокатора 9899.20
+    </p>
+</td>
+                                            <td class="issuetype">    Task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="reporter">            Какшинский Илья Александрович
+    </td>
+                                            <td class="creator">            Какшинский Илья Александрович
+    </td>
+                                            <td class="created"> 30/Jun/21 3:25 PM </td>
+                                            <td class="lastViewed"> 05/Jul/21 9:10 AM </td>
+                                            <td class="updated"> 05/Jul/21 9:10 AM </td>
+                                            <td class="resolutiondate"> 05/Jul/21 9:10 AM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">2</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Исправить замечания в инструкции.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9899.20</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101"></td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00j7z:
+  </td>
+                                            <td class="customfield_10105">      0|i00iak:
+  </td>
+                                            <td class="customfield_10100"></td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    1,200
+</td>
+                    </tr>
+
+
+                <tr id="issuerow14332" rel="14332" data-issuekey="BIN-93" class="issuerow">
+                                            <td class="project">    9600.BINOCULARS
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="BIN-93" href="http://jira:8080/browse/BIN-93">BIN-93</a>
+</td>
+                                            <td class="summary"><p>
+                Проверить отладочный кабель 9600.01.20.210T
+    </p>
+</td>
+                                            <td class="issuetype">    Task
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Done&lt;/span&gt;">Done</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    Done
+</td>
+                                            <td class="assignee">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="reporter">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="creator">            Шведов Александр Сергеевич
+    </td>
+                                            <td class="created"> 28/Jun/21 7:52 AM </td>
+                                            <td class="lastViewed"> 30/Jun/21 8:24 AM </td>
+                                            <td class="updated"> 30/Jun/21 8:24 AM </td>
+                                            <td class="resolutiondate"> 30/Jun/21 8:24 AM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks">                </td>
+                                            <td class="issuelinks">                </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Проверить отладочный кабель 9600.01.20.210T
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     
+</td>
+                                            <td class="aggregateprogress">     
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels">    9600</td>
+                                            <td class="customfield_10104"></td>
+                                            <td class="customfield_10101"></td>
+                                            <td class="customfield_10103"></td>
+                                            <td class="customfield_10102"></td>
+                                            <td class="customfield_10200">
+
+
+</td>
+                                            <td class="customfield_10300">      0|i00j1r:
+  </td>
+                                            <td class="customfield_10105">      0|i00i4c:
+  </td>
+                                            <td class="customfield_10100"></td>
+                                            <td class="customfield_10106"></td>
+                                            <td class="customfield_10400"></td>
+                                            <td class="customfield_10000">    <div class='dev-status-column-view-wrapper'></div>
+</td>
+                                            <td class="customfield_10301">    9,600
+</td>
+                    </tr>
+                </tbody>
+    </table>
+    </issuetable-web-component>
+    <div class="end-of-stable-message"></div>
+            <table border="1" >
+<tr>
+    <td bgcolor="#f5f5f5" colspan="48"><font size="1">
+        Generated at Fri Jul 30 08:24:05 MSK 2021 by Шведов Александр Сергеевич using Jira 8.2.2#802002-sha1:62e11fd4e3e0854fa206c8b64c089caf8e49350a.
+    </font></td>
+</tr>
+</table>
+
+</body>
+</html>
