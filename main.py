@@ -4,7 +4,7 @@ from parser_pckg.MainUI import GuiJiraParser
 
 def main():
     root = Tk()
-    root.geometry("390x128")
+    root.geometry("390x200")
     app = GuiJiraParser()
     root.mainloop()
 

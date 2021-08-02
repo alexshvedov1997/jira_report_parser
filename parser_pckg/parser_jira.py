@@ -17,6 +17,20 @@ class JiraReport:
         self.__table = None
         self.__hours_projects = list()
         self.__list_of_projects = set()
+        self.__department = None
+        self.__boss = None
+
+    def set_boss(self, obj_boss):
+        if obj_boss:
+            self.__boss = str(obj_boss)
+        else:
+            self.__boss = ""
+
+    def set_department(self, obj_dev):
+        if obj_dev:
+            self.__department = obj_dev
+        else:
+            self.__department = ""
 
     def get_file_data(self, path):
         with open(path, encoding="utf-8", newline="") as f:
@@ -98,7 +112,7 @@ class JiraReport:
         par_head.alignment = 2
         par_head_2 = self.__mydoc.add_paragraph("Утверждено приказом №     от         .")
         par_head_2.alignment = 2
-        self.__mydoc.add_paragraph("Подразделение: ОРВС")
+        self.__mydoc.add_paragraph("Подразделение: {}".format(self.__department))
         table_number = dict_table_number.get(self.__name.strip(), "    ")  #словарь с табелями
         self.__mydoc.add_paragraph("ФИО: " + self.__name.strip() + "\nТабельный номер:{}".format(table_number)
                                    + "\nМесяц: {}".format(month_rus[str(datetime.datetime.now().month)])
@@ -114,7 +128,7 @@ class JiraReport:
         self.__table.cell(0, 3).text = 'Шифр затрат'
         self.__fill_table_all_hours()
         self.__mydoc.add_paragraph("\nПодробная информация по ссылке: http://jira:8080/issues/?filter=11201")
-        self.__mydoc.add_paragraph("Руководитель: Шумский А.П")
+        self.__mydoc.add_paragraph("Руководитель: {}".format(self.__boss))
         self.__mydoc.add_paragraph("Отчет передан по системе 1С")
         self.__mydoc.save(r"{}".format(path))
 
