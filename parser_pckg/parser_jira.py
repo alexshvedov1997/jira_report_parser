@@ -94,7 +94,6 @@ class JiraReport:
 
     def create_table_docx(self, path):
         self.__add_time_to_project()
-       # print(self.__name.strip())
         par_head = self.__mydoc.add_paragraph("Приложение 1. Форма отчета")
         par_head.alignment = 2
         par_head_2 = self.__mydoc.add_paragraph("Утверждено приказом №     от         .")

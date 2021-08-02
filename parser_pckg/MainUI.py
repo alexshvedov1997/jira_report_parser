@@ -12,10 +12,12 @@ class GuiJiraParser(Frame):
     def __init__(self):
         super().__init__()
         self.__work_time = StringVar()
+        self.__department = StringVar()
         self.initGui()
         self.__file_name = None
         self.__jira_report = None
         self.__file_name_save = None
+
 
     def initGui(self):
         self.master.title("Формирование отчета Jira")
@@ -23,10 +25,14 @@ class GuiJiraParser(Frame):
         label_time.grid(row=0, column=0, pady=5, padx=5)
         time_entry = Entry(textvariable=self.__work_time)
         time_entry.grid(row=0, column=1, pady=5, padx=5)
+        label_department = Label(text="Название отдела: ")
+        label_department.grid(row=1, column=0, pady=5, padx=5)
+        department_entry = Entry(textvariable=self.__department)
+        department_entry.grid(row=1, column=1, pady=5, padx=5)
         button1 = Button(text="Открыть Jira\n файл",  command=self.__extract_text, width=12, height=2)
-        button1.grid(row=1, column=0,  sticky=W, pady=20, padx=10)
+        button1.grid(row=2, column=0,  sticky=W, pady=20, padx=10)
         button2 = Button(text="Создать отчет", command=self.__create_report, width=12, height=2)
-        button2.grid(row=1, column=1, sticky=E, pady=20, padx=10)
+        button2.grid(row=2, column=1, sticky=E, pady=20, padx=10)
 
     def __extract_text(self):
         self.__file_name = fd.askopenfilename(filetypes=(
