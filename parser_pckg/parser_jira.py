@@ -78,6 +78,8 @@ class JiraReport:
     def create_doc(self, path):
         count = 0
         self.__add_time_to_project()
+        par_head = self.__mydoc.add_paragraph("Приложение 1. Форма отчета\nУтверждено приказом №    от         ")
+        par_head.alignment = 2
         self.__mydoc.add_paragraph("ФИО: " + self.__name.strip())
         self.__mydoc.add_paragraph("Количество часов: " + self.__work_time)
         for elem in self.__lst_report:
@@ -93,6 +95,10 @@ class JiraReport:
     def create_table_docx(self, path):
         self.__add_time_to_project()
        # print(self.__name.strip())
+        par_head = self.__mydoc.add_paragraph("Приложение 1. Форма отчета")
+        par_head.alignment = 2
+        par_head_2 = self.__mydoc.add_paragraph("Утверждено приказом №     от         .")
+        par_head_2.alignment = 2
         self.__mydoc.add_paragraph("Подразделение: ОРВС")
         table_number = dict_table_number.get(self.__name.strip(), "    ")  #словарь с табелями
         self.__mydoc.add_paragraph("ФИО: " + self.__name.strip() + "\nТабельный номер:{}".format(table_number)
