@@ -75,22 +75,6 @@ class JiraReport:
     def read_data(self):
         return deepcopy(self.__lst_report)
 
-    def create_doc(self, path):
-        count = 0
-        self.__add_time_to_project()
-        par_head = self.__mydoc.add_paragraph("Приложение 1. Форма отчета\nУтверждено приказом №    от         ")
-        par_head.alignment = 2
-        self.__mydoc.add_paragraph("ФИО: " + self.__name.strip())
-        self.__mydoc.add_paragraph("Количество часов: " + self.__work_time)
-        for elem in self.__lst_report:
-            count += 1
-            str_2_head = "Задача " + str(count) + " :\n"
-            str_ = "Проект: " + elem["Project"] + "\n" + "Задача: " + elem["Summary"] + "\n" \
-                  + "Затраченное время: " + elem["Time"] + \
-                   "\n" + "Статус: " + elem["Status"] + "\n" + "Список проектов: " + elem["Labels"] + "\n"
-            self.__mydoc.add_heading(str_2_head, 3)
-            self.__mydoc.add_paragraph(str_)
-        self.__mydoc.save(r"{}".format(path))
 
     def create_table_docx(self, path):
         self.__add_time_to_project()
@@ -135,30 +119,6 @@ class JiraReport:
                 hours += int(self.__work_time) - count_of_task * hours
             elem["Time"] = str(hours)
 
-    def __set_columns_inches(self):
-        for i in range(len(self.__lst_report)):
-            for j in range(4):
-                if j == 0:
-                    self.__table.cell(i, j).width = Inches(1)
-                elif j == 1:
-                    self.__table.cell(i, j).width = Inches(1)
-                elif j == 2:
-                    self.__table.cell(i, j).width = Inches(1)
-                elif j == 3:
-                    self.__table.cell(i, j).width = Inches(2)
-
-    def __fill_table(self):
-        for row, elem in enumerate(self.__lst_report, 1):
-            for clmn in range(4):
-                if clmn == 0:
-                    self.__table.cell(row, clmn).text = str(row)
-                elif clmn == 1:
-                    self.__table.cell(row, clmn).text = elem["Summary"]
-                elif clmn == 2:
-                    self.__table.cell(row, clmn).text = elem["Time"]
-                elif clmn == 3:
-                    self.__table.cell(row, clmn).text = elem["Labels"]
-
     def __calculate_total_hours_to_projects(self):
      #   lst_ = [elem["Labels"].split(",")[0] for elem in self.__lst_report]
        # lst_ = [elem for elem in lst_ if elem.isdigit()]
@@ -171,7 +131,6 @@ class JiraReport:
                 lst_.append(lst_labels[1].strip())
             elif len(lst_labels) == 1:
                 lst_.append(lst_labels[0].strip())
-
         self.__list_of_projects = set(lst_)
         for project in self.__list_of_projects:
             sum_hours = 0
